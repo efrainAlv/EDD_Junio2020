@@ -117,7 +117,11 @@ void AVL_Tree::updateHeightAndBF(TreeNode* leaf) {
 				std::cout << std::endl << "SE ENCONTRO UN DESBALANCE EN EL ARBOL " << std::endl;
 				root = balance(leaf, true); //ENVIA COMO PARAMETRO AL PADRE DEL NODO ANALIZADO
 
-
+				/*
+				leaf->leftChild->height = leaf->leftChild->height - 2;
+				leaf->BF = leaf->rightChild->height - leaf->leftChild->height;
+				leaf->leftChild->BF = 0;
+				*/
 
 				break;
 			}
@@ -128,6 +132,7 @@ void AVL_Tree::updateHeightAndBF(TreeNode* leaf) {
 				
 				balance(leaf, true); //ENVIA COMO PARAMETRO AL PADRE DEL NODO ANALIZADO
 				
+				/*
 				leaf->leftChild->height = leaf->leftChild->height - 2;
 				leaf->BF = leaf->rightChild->height - leaf->leftChild->height;
 				leaf->leftChild->BF = 0;
@@ -163,19 +168,23 @@ TreeNode* AVL_Tree::balance(TreeNode* leaf, bool isRoot) {
 
 		if (leaf->BF == 1) {
 
-			return LR(leaf);
+			return leftRotation(leaf);
 		}
 		else if (leaf->BF == -1) {
-			return nullptr;
+			
+			return doubleRotationRL(leaf);
 		}
 	}
 	else if (leaf->parent->BF < -1) {
 
 		if (leaf->BF == -1) {
-			return nullptr;
+			
+			return rightRotation(leaf);
+
 		}
 		else if (leaf->BF == 1) {
-			return nullptr;
+			
+			return doubleRotationLR(leaf);
 		}
 	}
 
@@ -183,47 +192,8 @@ TreeNode* AVL_Tree::balance(TreeNode* leaf, bool isRoot) {
 }
 
 
-TreeNode* AVL_Tree::leftRotaction(TreeNode* leaf, bool isRoot) {
 
-	TreeNode* parent = leaf->parent;
-	TreeNode* node = leaf;
-
-	parent->rightChild = leaf->leftChild;
-	
-	leaf->parent->rightChild = leaf;
-
-	leaf->parent = parent->parent;
-
-	parent->parent = leaf;
-
-	leaf->leftChild = parent;
-	parent->parent = leaf;
-
-	
-	if (leaf->parent->leftChild!=nullptr) {
-		leaf->parent->leftChild->sibling = leaf;
-		leaf->sibling = leaf->parent->leftChild;
-	}
-	
-	leaf->rightChild->sibling = leaf->leftChild;
-	leaf->leftChild->sibling = leaf->rightChild;
-
-	if (leaf->leftChild->rightChild!=nullptr && leaf->leftChild->leftChild!=nullptr) {
-
-		leaf->leftChild->rightChild->sibling = leaf->leftChild->leftChild;
-		leaf->leftChild->leftChild->sibling = leaf->leftChild->rightChild;
-
-	}
-
-	
-
-	return node;
-
-}
-
-
-
-TreeNode* AVL_Tree::LR(TreeNode* leaf) {
+TreeNode* AVL_Tree::leftRotation(TreeNode* leaf) {
 
 	TreeNode* parent = leaf->parent; //EL NODO DESEQUILIBRADO
 	TreeNode* node = leaf;
@@ -238,8 +208,10 @@ TreeNode* AVL_Tree::LR(TreeNode* leaf) {
 	//SI EL NODO DESEQUILIBRADO ES LA RAIZ DEL ARBOL (NO TIENE PADRE)
 	else {
 
-		parent->leftChild->sibling = node->leftChild;		//EL HERMANO DEL HIJO IZQUIERDO EL NODO DESEQUILIBRADO SERA IGUAL AL HIJO IZQUIERDO DEL HIJO DEL NODO DESEQUILIBRADO
-
+		if (parent->leftChild!=nullptr) {
+			parent->leftChild->sibling = node->leftChild;		//EL HERMANO DEL HIJO IZQUIERDO EL NODO DESEQUILIBRADO SERA IGUAL AL HIJO IZQUIERDO DEL HIJO DEL NODO DESEQUILIBRADO
+		}
+		
 		if (node->leftChild!=nullptr) {
 			node->leftChild->sibling = parent->leftChild;	//LO MISO DE ARRIBA, PERO DECLARANDO PARA EL HIJO IZQUIERDO DEL HIOJ DEL NODO DESEQUILIBRADO EN CASO QUE SEA DIFERENTE DE NULO
 		}
@@ -258,9 +230,156 @@ TreeNode* AVL_Tree::LR(TreeNode* leaf) {
 	node->rightChild->sibling = parent;		//EL HERMANO EL HIJO DERECHO DEL HIJO DEL NODO DESEQUILIBRADO AHORA SERA EL NODO DESEQUILIBRADO
 
 
+	node->leftChild->height = node->leftChild->height - 2;
+	node->rightChild->height = 1;
+	node->leftChild->BF = 0;
+	node->rightChild->BF = 0;
+	node->BF = 0;
+
+
 	return node;
 
 }
 
 
+TreeNode* AVL_Tree::rightRotation(TreeNode* leaf) {
+
+	TreeNode* parent = leaf->parent; //EL NODO DESEQUILIBRADO
+	TreeNode* node = leaf;
+
+
+	// SI EL NODO DESEQUILIBRADO NO TIENE PADRE
+	if (parent->parent != nullptr) {
+		parent->parent->leftChild = node;				//EL HIJO IZQUIERDO DEL PADRE DEL NODO DESEQUILIBRADO SERA IGUAL AL HIJO DERECHO DEL NODO DESEQUILIBRADO
+		parent->parent->rightChild->sibling = node;		//EL HERMANO DEL HIJO IZQUIERDO DEL PADRE DEL NODO DESEQUILIBRADO SERA IGUAL AL HIJO DERECHO DEL NODO DESEQUILIBRADO
+		node->sibling = parent->parent->rightChild;		//LO MISMO DE ARRIBA, SOLO QUE SE DECLARA PARA EL HIJO DEL NODO DESEQUILIBRADO
+	}
+	//SI EL NODO DESEQUILIBRADO ES LA RAIZ DEL ARBOL (NO TIENE PADRE)
+	else {
+
+		if (parent->rightChild!=nullptr) {
+			parent->rightChild->sibling = node->rightChild;		//EL HERMANO DEL HIJO IZQUIERDO EL NODO DESEQUILIBRADO SERA IGUAL AL HIJO IZQUIERDO DEL HIJO DEL NODO DESEQUILIBRADO
+		}
+		
+		if (node->rightChild != nullptr) {
+			node->rightChild->sibling = parent->rightChild;	//LO MISO DE ARRIBA, PERO DECLARANDO PARA EL HIJO IZQUIERDO DEL HIOJ DEL NODO DESEQUILIBRADO EN CASO QUE SEA DIFERENTE DE NULO
+		}
+
+	}
+
+	node->parent = parent->parent;			//EL PADRE DEL HIJO DEL NODO DESEQUILIBRADO AHORA SERA EL PADRE DEL NODO DESEQUILIBRADO
+
+	parent->parent = node;					//EL PADRE DEL NODO DESEQUILIBRADO AHORA SERA SU HIJO DERECHO
+
+	parent->leftChild = node->rightChild;	//EL HIJO DERECHO DEL NODO DESEQUILIBRADO AHORA SERA EL HIJO DEL HIJO DEL NODO DESEQUILIBRADO
+
+	node->rightChild = parent;				//EL HIJO IZQUIERDO DEL HIJO DEL NODO DESEQUILIBRADO AHORA SERA IGUAL AL NODO DESEQUILIBRADO
+
+	parent->sibling = node->leftChild;		//EL HERMANO DEL NODO DESEQUILIBRADO AHORA SERA EL HIJO DERECHO DEL HIJO DEL NODO DESEQUILIBRADO
+	node->leftChild->sibling = parent;		//EL HERMANO EL HIJO DERECHO DEL HIJO DEL NODO DESEQUILIBRADO AHORA SERA EL NODO DESEQUILIBRADO
+
+
+	node->rightChild->height = node->rightChild->height - 2;
+	node->leftChild->height = 1;
+	node->rightChild->BF = 0;
+	node->leftChild->BF = 0;
+	node->BF = 0;
+
+	return node;
+	
+}
+
+
+
+void AVL_Tree::printTree() {
+
+
+}
+
+
+TreeNode* AVL_Tree::doubleRotationRL(TreeNode* leaf) {
+
+	TreeNode* parent = leaf->parent; //EL NODO DESEQUILIBRADO
+	TreeNode* node = leaf;
+
+	if (parent->parent != nullptr) {
+		parent->parent->rightChild = node->leftChild;
+		node->leftChild->parent = parent->parent;
+	}
+	else {
+		node->leftChild->parent = parent->parent;
+	}
+
+	node->parent = node->leftChild;
+	parent->parent = node->leftChild;
+
+	node->leftChild->rightChild = node;
+	node->leftChild->leftChild = parent;
+
+	node->leftChild = nullptr;
+	parent->rightChild = nullptr;
+
+
+	//ESTABLECER NODOS COMO HERMNOS
+	node->parent->leftChild->sibling = node->parent->rightChild;
+	node->parent->rightChild->sibling = node->parent->leftChild;
+
+
+	//ESTABLECER ALTURAS
+	node->parent->height = node->height;
+	node->height = node->height - 1;
+	node->parent->leftChild->height = node->parent->leftChild->height - 2;
+
+	//ESTABLECER FACTORES DE BALANCE
+	node->parent->BF = 0;
+	node->parent->leftChild->BF = 0;
+	node->parent->rightChild->BF = 0;
+
+	return node->parent;
+
+}
+
+
+
+TreeNode* AVL_Tree::doubleRotationLR(TreeNode* leaf) {
+
+	TreeNode* parent = leaf->parent; //EL NODO DESEQUILIBRADO
+	TreeNode* node = leaf;
+
+	if (parent->parent != nullptr) {
+		parent->parent->leftChild = node->rightChild;
+		node->rightChild->parent = parent->parent;
+	}
+	else {
+		node->rightChild->parent = parent->parent;
+	}
+
+	node->parent = node->rightChild;
+	parent->parent = node->rightChild;
+
+	node->rightChild->leftChild = node;
+	node->rightChild->rightChild = parent;
+
+	node->rightChild = nullptr;
+	parent->leftChild = nullptr;
+
+
+	//ESTABLECER NODOS COMO HERMNOS
+	node->parent->leftChild->sibling = node->parent->rightChild;
+	node->parent->rightChild->sibling = node->parent->leftChild;
+
+
+	//ESTABLECER ALTURAS
+	node->parent->height = node->height;
+	node->height = node->height - 1;
+	node->parent->rightChild->height = node->parent->rightChild->height - 2;
+
+	//ESTABLECER FACTORES DE BALANCE
+	node->parent->BF = 0;
+	node->parent->leftChild->BF = 0;
+	node->parent->rightChild->BF = 0;
+
+	return node->parent;
+
+}
 

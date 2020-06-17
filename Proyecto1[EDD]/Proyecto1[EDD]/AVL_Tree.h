@@ -25,11 +25,17 @@ public:
 	
 	TreeNode* balance(TreeNode* leaf, bool isRoot);
 
-	TreeNode* leftRotaction(TreeNode* leaf, bool isRoot);
-
-	TreeNode* rightRotation(TreeNode* leaf, bool isRoot);
+	TreeNode* rightRotation(TreeNode* leaf);
 	
-	TreeNode* LR(TreeNode* leaf);
+	TreeNode* leftRotation(TreeNode* leaf);
+
+	TreeNode* doubleRotationRL(TreeNode* leaf);
+
+	TreeNode* doubleRotationLR(TreeNode* leaf);
+
+	void printTree();
+
+
 
 };
 
