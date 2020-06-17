@@ -17,7 +17,9 @@ public:
 
 	bool isEmpty();
 
-	void add(std::string _name);
+	void add(Assets* asset);
+
+	void add(std::string name, bool bolean);
 
 	void updateHeightAndBF(TreeNode* leaf);
 
@@ -33,9 +35,8 @@ public:
 
 	TreeNode* doubleRotationLR(TreeNode* leaf);
 
-	void printTree();
+	void printTree(TreeNode* node);
 
-
-
+	TreeNode* find(std::string ID);
 };
 

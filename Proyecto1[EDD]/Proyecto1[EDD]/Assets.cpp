@@ -15,6 +15,12 @@ std::string Assets::getDescription() {
 	return this->description;
 }
 
+void Assets::setAvaliable(bool avaliable) {
+	this->avaliable = avaliable;
+}
+bool Assets::isAvaliable() {
+	return this->avaliable;
+}
 
 std::string Assets::getID() {
 	return this->ID;

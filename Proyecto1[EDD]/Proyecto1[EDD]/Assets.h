@@ -15,6 +15,7 @@ private:
 	std::string name;
 	std::string ID;
 	std::string description;
+	bool avaliable;
 
 public:
 
@@ -31,6 +32,9 @@ public:
 
 	void setDescription(std::string _userName);
 	std::string getDescription();
+
+	void setAvaliable(bool avaliable);
+	bool isAvaliable();
 
 	std::string getID();
 
