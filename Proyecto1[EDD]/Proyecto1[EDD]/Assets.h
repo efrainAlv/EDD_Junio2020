@@ -24,6 +24,8 @@ public:
 		boost::uuids::uuid uuid = boost::uuids::random_generator()();
 		this->ID = boost::lexical_cast<std::string>(uuid);
 
+		this->avaliable = true;
+
 	}
 
 

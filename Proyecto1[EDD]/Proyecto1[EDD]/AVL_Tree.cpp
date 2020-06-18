@@ -508,20 +508,50 @@ TreeNode* AVL_Tree::doubleRotationLR(TreeNode* leaf) {
 
 
 
-void AVL_Tree::printTree(TreeNode* node) {
+void AVL_Tree::printTree(TreeNode* node, AssetsList* assets) {
 
 	
-	std::cout << "ID: " << node->asset->getID() << "   NOMBRE: " << node->asset->getName() << std::endl;
+	if (node!=nullptr) {
 
-	if (node->leftChild != nullptr) {
-		printTree(node->leftChild);
-	}
+		if (node->asset->isAvaliable()) {
+			std::cout << "ID: " << node->asset->getID() << "   NOMBRE: " << node->asset->getName() << std::endl;
+			assets->addLast(node);
+		}
+		
+		if (node->leftChild != nullptr) {
+			printTree(node->leftChild, assets);
+		}
 
-	if (node->rightChild != nullptr) {
-		printTree(node->rightChild);
+		if (node->rightChild != nullptr) {
+			printTree(node->rightChild, assets);
+		}
+
 	}
 
 }
+
+
+void AVL_Tree::printUserTree(TreeNode* node) {
+
+
+	if (node != nullptr) {
+
+		if (!node->asset->isAvaliable()) {
+			std::cout << "ID: " << node->asset->getID() << "   NOMBRE: " << node->asset->getName() << std::endl;
+		}
+
+		if (node->leftChild != nullptr) {
+			printUserTree(node->leftChild);
+		}
+
+		if (node->rightChild != nullptr) {
+			printUserTree(node->rightChild);
+		}
+
+	}
+
+}
+
 
 
 TreeNode* AVL_Tree::find(std::string ID) {

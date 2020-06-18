@@ -1,6 +1,7 @@
 #pragma once
 
-#include "TreeNode.h"
+
+#include "AssetsList.h"
 
 class AVL_Tree
 {
@@ -35,7 +36,9 @@ public:
 
 	TreeNode* doubleRotationLR(TreeNode* leaf);
 
-	void printTree(TreeNode* node);
+	void printTree(TreeNode* node, AssetsList* assets);
+
+	void printUserTree(TreeNode* node);
 
 	TreeNode* find(std::string ID);
 };
