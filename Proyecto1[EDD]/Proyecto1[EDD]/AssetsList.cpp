@@ -1,5 +1,7 @@
 #include "AssetsList.h"
 
+#include <fstream>
+
 bool AssetsList::isEmpty() {
 
 	if (head == nullptr) {
@@ -136,5 +138,45 @@ void AssetsList::deleteAsset(std::string ID) {
 
 	}
 
+
+}
+
+
+void AssetsList::createFileList() {
+
+	AssetNode* aux = head;
+
+	std::string links;
+
+	do {
+
+		
+		links += '"' + aux->node->asset->getID() + '"' + "[shape = record label =" + '"' + "{" + "ACtivo: " + aux->node->asset->getID() + "|" + "Activo: " + aux->node->asset->getName() + "}" + '"' + " style = filled fillcolor = bisque1]" + "\n";
+		
+		if (aux->next != nullptr) {
+			links += '"' + aux->node->asset->getID() + '"' + "->" + '"' + aux->next->node->asset->getID() + '"' + "\n";
+		}
+
+		aux = aux->next;
+
+	} while (aux!=nullptr);
+
+
+
+	std::ofstream file;
+	file.open("C:/Users/efrai/Desktop/GRAPHS/Lista/Lista.txt");
+
+	file << "digraph G{";
+
+	file << links;
+
+	file << "}";
+	file.close();
+
+	std::string path = "dot -Tpng C:\\Users\\efrai\\Desktop\\GRAPHS\\Lista\\lista.txt -o C:\\Users\\efrai\\Desktop\\GRAPHS\\Lista\\lista.png";
+
+	std::cout << path.c_str();
+
+	system(path.c_str());
 
 }

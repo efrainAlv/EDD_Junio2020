@@ -41,5 +41,14 @@ public:
 	void printUserTree(TreeNode* node);
 
 	TreeNode* find(std::string ID);
+
+	std::string createTreeFile(TreeNode* node, std::string links, std::string user);
+
+	void creatTreeFileByDepartament(std::string user);
+
+	void creatTreeFileByCompany(std::string user);
+
+	void createUserTreeFile(std::string user);
+
 };
 

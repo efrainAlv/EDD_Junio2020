@@ -10,6 +10,7 @@ class CircularList
 public:
 	CircularNode* head;
 	std::string listName;
+	int size;
 
 	CircularList(std::string _listName):listName(_listName) {
 		head = nullptr;
@@ -20,7 +21,15 @@ public:
 
 	void insert(CircularNode* node);
 
+	void ascendenet();
+
+	void descendent();
+
+	void createFileCircularList();
 
 
 };
+
+
+
 

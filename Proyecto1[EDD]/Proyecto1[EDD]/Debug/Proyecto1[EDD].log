@@ -1,10 +1,46 @@
-﻿  HeaderNode.cpp
-  List.cpp
-  Matrix.cpp
-  MatrixNode.cpp
-  Nodo.cpp
-  Proyecto1[EDD].cpp
+﻿  Proyecto1[EDD].cpp
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(310,27): error C2374: 'userT': nueva definición; inicialización múltiple
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(275): message : vea la declaración de 'userT'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(236,17): error C2360: la inicialización de 'dept1' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(223): message : vea la declaración de 'dept1'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(250,17): error C2360: la inicialización de 'comp2' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(238): message : vea la declaración de 'comp2'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(250,17): error C2360: la inicialización de 'dept1' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(223): message : vea la declaración de 'dept1'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(260,17): error C2360: la inicialización de 'comp2' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(238): message : vea la declaración de 'comp2'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(260,17): error C2360: la inicialización de 'dept1' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(223): message : vea la declaración de 'dept1'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(295,17): error C2360: la inicialización de 'userT' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(275): message : vea la declaración de 'userT'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(295,17): error C2360: la inicialización de 'dept3' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(264): message : vea la declaración de 'dept3'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(295,17): error C2360: la inicialización de 'comp3' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(263): message : vea la declaración de 'comp3'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(295,17): error C2360: la inicialización de 'user3' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(262): message : vea la declaración de 'user3'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(295,17): error C2360: la inicialización de 'comp2' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(238): message : vea la declaración de 'comp2'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(295,17): error C2360: la inicialización de 'dept1' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(223): message : vea la declaración de 'dept1'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'userT' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(310): message : vea la declaración de 'userT'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'dept4' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(299): message : vea la declaración de 'dept4'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'comp4' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(298): message : vea la declaración de 'comp4'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'user4' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(297): message : vea la declaración de 'user4'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'dept3' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(264): message : vea la declaración de 'dept3'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'comp3' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(263): message : vea la declaración de 'comp3'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'user3' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(262): message : vea la declaración de 'user3'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'comp2' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(238): message : vea la declaración de 'comp2'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(326,17): error C2360: la inicialización de 'dept1' se omite en la etiqueta 'case'
+C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Proyecto1[EDD]\Proyecto1[EDD].cpp(223): message : vea la declaración de 'dept1'
   Transaction.cpp
   User.cpp
   Generando código...
-  Proyecto1[EDD].vcxproj -> C:\Users\efrai\Desktop\ESTRUCTURAS DE DATOS\PROYECTOS\Proyecto1[EDD]\Debug\Proyecto1[EDD].exe

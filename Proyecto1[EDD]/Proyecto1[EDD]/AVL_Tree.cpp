@@ -1,5 +1,7 @@
 #include "AVL_Tree.h"
 
+#include <fstream>
+
 bool AVL_Tree::isEmpty() {
 	return root == nullptr;
 }
@@ -580,3 +582,121 @@ TreeNode* AVL_Tree::find(std::string ID) {
 	return aux;
 
 }
+
+
+
+
+std::string AVL_Tree::createTreeFile(TreeNode* node, std::string _links, std::string user) {
+
+	
+	if (node != nullptr) {
+
+		if (node==root) {
+			_links += '"' + user + '"' + "[shape = record label = " + '"' + "{" + user + "}" + '"' + "style = filled fillcolor = bisque1]" + "\n";
+		}
+
+		if (node->asset->isAvaliable()) {
+			_links += '"'+node->asset->getName()+'"'+"[shape = record label = " + '"' + "{" + node->asset->getName() + "}" + '"' + "style = filled fillcolor = green]"+"\n";
+		}
+
+		if (node->leftChild != nullptr) {
+			
+			_links = createTreeFile(node->leftChild, _links+'"'+node->asset->getName()+ '"' + " -> " + '"' +node->leftChild->asset->getName()+'"' + "\n", user);
+		}
+
+		if (node->rightChild != nullptr) {
+			
+			_links = createTreeFile(node->rightChild, _links + '"' + node->asset->getName()+ '"' + " -> " + '"' +node->rightChild->asset->getName()+ '"' + "\n", user);
+		}
+
+	}
+
+	return _links;
+}
+
+
+
+void AVL_Tree::creatTreeFileByDepartament(std::string user) {
+
+
+	std::string links = createTreeFile(root, "", user);
+
+	if (root!=nullptr) {
+
+		std::ofstream file;
+		file.open("C:/Users/efrai/Desktop/GRAPHS/Arboles/Departamento/arbol" + root->asset->getID() + ".txt");
+
+		file << "digraph G{";
+
+		file << links;
+
+		file << "}";
+		file.close();
+
+		std::string path = "dot -Tpng C:\\Users\\efrai\\Desktop\\GRAPHS\\Arboles\\Departamento\\arbol" + root->asset->getID() + ".txt -o C:\\Users\\efrai\\Desktop\\GRAPHS\\Arboles\\Departamento\\arbol" + root->asset->getID() + ".png";
+
+		std::cout<< path.c_str();
+
+		system(path.c_str());
+
+	}
+
+}
+
+
+
+void AVL_Tree::createUserTreeFile(std::string user) {
+
+
+	std::string links = createTreeFile(root, "", user);
+
+	if (root != nullptr) {
+
+		std::ofstream file;
+		file.open("C:/Users/efrai/Desktop/GRAPHS/Activos/arbol" + root->asset->getID() + ".txt");
+
+		file << "digraph G{";
+
+		file << links;
+
+		file << "}";
+		file.close();
+
+		std::string path = "dot -Tpng C:\\Users\\efrai\\Desktop\\GRAPHS\\Activos\\arbol" + root->asset->getID() + ".txt -o C:\\Users\\efrai\\Desktop\\GRAPHS\\Activos\\arbol" + root->asset->getID() + ".png";
+
+		std::cout << path.c_str();
+
+		system(path.c_str());
+
+	}
+
+}
+
+
+void AVL_Tree::creatTreeFileByCompany(std::string user) {
+
+
+	std::string links = createTreeFile(root, "", user);
+
+	if (root != nullptr) {
+
+		std::ofstream file;
+		file.open("C:/Users/efrai/Desktop/GRAPHS/Arboles/Empresa/arbol" + root->asset->getID() + ".txt");
+
+		file << "digraph G{";
+
+		file << links;
+
+		file << "}";
+		file.close();
+
+		std::string path = "dot -Tpng C:\\Users\\efrai\\Desktop\\GRAPHS\\Arboles\\Empresa\\arbol" + root->asset->getID() + ".txt -o C:\\Users\\efrai\\Desktop\\GRAPHS\\Arboles\\Empresa\\arbol"+ root->asset->getID() +".png";
+
+		system(path.c_str());
+
+	}
+
+}
+
+
+
