@@ -53,13 +53,13 @@ public void insertar(String placa, NodoArbol nodo){
         }
         else{
 
-            boolean esMayor=false;
+            boolean esMayor=true;
             
             for (int i = 0; i<nodo.numeroClaves || nodo.claves[i]!=null; i++) {
                 
                 if(nodo.claves[i].placa.compareTo(placa)>0){   
                     this.insertar(placa, nodo.claves[i].izquierdo);
-                    esMayor=true;
+                    esMayor=false;
                     break;
                 }
             }
@@ -87,10 +87,12 @@ public void insertarAPadre(NodoArbol nodo){
         if(i<medio){
             izquierdo.claves[i] = nodo.claves[i];
             nodo.claves[i]=null;
+            izquierdo.numeroClaves++;
         }
         else if(i>medio){
             derecho.claves[i-3] = nodo.claves[i];
             nodo.claves[i]=null;
+            derecho.numeroClaves++;
         }
         
     }
@@ -98,6 +100,9 @@ public void insertarAPadre(NodoArbol nodo){
     Clave nuevaClave = new Clave(nodo.claves[medio].placa);
     nuevaClave.izquierdo = izquierdo;
     nuevaClave.derecho = derecho;
+    
+    derecho.padre = nodo.padre;
+    izquierdo.padre = nodo.padre;
     
     nodo.padre.claves[nodo.padre.numeroClaves] = nuevaClave;
     nodo.padre.numeroClaves++;
@@ -139,6 +144,13 @@ public Clave[] ordenar(Clave[] claves, int cantidadC){
         }
     }
     
+    
+    for (int i = 0; i < cantidadC-1; i++) {
+        claves[i].derecho = claves[i+1].izquierdo;
+        claves[i+1].izquierdo = claves[i].derecho;
+    }
+    
+    
     return claves;
 }
 
@@ -176,10 +188,14 @@ public NodoArbol dividir(NodoArbol nodo){
             if(i<medio){
                 izquierdo.claves[i] = nodo.claves[i];
                 nodo.claves[i]=null;
+                nodo.numeroClaves--;
+                izquierdo.numeroClaves++;
             }
             else if(i>medio){
                 derecho.claves[i-3] = nodo.claves[i];
                 nodo.claves[i]=null;
+                nodo.numeroClaves--;
+                derecho.numeroClaves++;
             }
             else{
                 nodo.claves[0]=nodo.claves[medio];

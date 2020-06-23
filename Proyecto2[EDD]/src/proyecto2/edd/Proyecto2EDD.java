@@ -18,11 +18,14 @@ public class Proyecto2EDD {
     public static void main(String[] args) {
         
         Arbol_B arbol = new Arbol_B();
-        arbol.insertar("gato",null);
-        arbol.insertar("elefante",null);
         arbol.insertar("dedo",null);
-        arbol.insertar("cabecera",null);
         arbol.insertar("arbol",null);
+        arbol.insertar("gato",null);
+        arbol.insertar("cabecera",null);
+        arbol.insertar("elefante",null);
+        arbol.insertar("helado",null);
+        arbol.insertar("elegido",null);
+        arbol.insertar("jarro",null);
         
         arbol.imprimirClavesRaiz();
         
