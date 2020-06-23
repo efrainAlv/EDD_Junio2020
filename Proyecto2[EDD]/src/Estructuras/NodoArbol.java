@@ -11,7 +11,7 @@ public class NodoArbol {
     
 
 public int numeroClaves;
-public String[] claves;
+public Clave[] claves;
 public NodoArbol[] hijos;
 public NodoArbol padre;
 
@@ -20,7 +20,7 @@ public boolean esPadre;
 public NodoArbol(){
     
     this.numeroClaves=0;
-    this.claves = new String[5];
+    this.claves = new Clave[5];
     this.hijos = new NodoArbol[5];
     this.padre = null;
     

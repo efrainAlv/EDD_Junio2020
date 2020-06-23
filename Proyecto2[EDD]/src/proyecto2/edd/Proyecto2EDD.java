@@ -18,7 +18,7 @@ public class Proyecto2EDD {
     public static void main(String[] args) {
         
         Arbol_B arbol = new Arbol_B();
-        //arbol.insertar("gato",null);
+        arbol.insertar("gato",null);
         arbol.insertar("elefante",null);
         arbol.insertar("dedo",null);
         arbol.insertar("cabecera",null);

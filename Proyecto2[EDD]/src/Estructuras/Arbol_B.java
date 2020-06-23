@@ -37,36 +37,87 @@ public void insertar(String placa, NodoArbol nodo){
     if(estaVacio()){
         raiz = new NodoArbol();
         raiz.numeroClaves++;
-        raiz.claves[0] = placa;
+        raiz.claves[0] = new Clave(placa);
     }
     else{
         
-        for (int i = 0; i<nodo.numeroClaves; i++) {
-            
-            if(!nodo.esPadre){
-                nodo.claves[raiz.numeroClaves] = placa;
-                nodo.numeroClaves++;
-                nodo.claves  = this.ordenar(nodo.claves, nodo.numeroClaves);
-                
-                if(nodo.numeroClaves==5){
-                    this.dividir(nodo);
-                }
-                
-                break;
+        if(!nodo.esPadre){
+            nodo.claves[nodo.numeroClaves] = new Clave(placa);
+            nodo.numeroClaves++;
+            nodo.claves  = this.ordenar(nodo.claves, nodo.numeroClaves);
+
+            if(nodo.numeroClaves==5){
+                this.dividir(nodo);
             }
-            else{
-             
-                
-                
-            }
+
         }
-        
+        else{
+
+            boolean esMayor=false;
+            
+            for (int i = 0; i<nodo.numeroClaves || nodo.claves[i]!=null; i++) {
+                
+                if(nodo.claves[i].placa.compareTo(placa)>0){   
+                    this.insertar(placa, nodo.claves[i].izquierdo);
+                    esMayor=true;
+                    break;
+                }
+            }
+            
+            if(esMayor){
+                this.insertar(placa, nodo.claves[nodo.numeroClaves-1].derecho);
+            }
+            
+        }
     }
     
 }
 
 
-public String[] ordenar(String[] claves, int cantidadC){
+
+public void insertarAPadre(NodoArbol nodo){
+
+    NodoArbol izquierdo = new NodoArbol();
+    NodoArbol derecho = new NodoArbol();
+
+    int medio = nodo.claves.length/2;
+
+    for (int i = 0; i < nodo.claves.length; i++) {
+
+        if(i<medio){
+            izquierdo.claves[i] = nodo.claves[i];
+            nodo.claves[i]=null;
+        }
+        else if(i>medio){
+            derecho.claves[i-3] = nodo.claves[i];
+            nodo.claves[i]=null;
+        }
+        
+    }
+    
+    Clave nuevaClave = new Clave(nodo.claves[medio].placa);
+    nuevaClave.izquierdo = izquierdo;
+    nuevaClave.derecho = derecho;
+    
+    nodo.padre.claves[nodo.padre.numeroClaves] = nuevaClave;
+    nodo.padre.numeroClaves++;
+    
+    this.ordenar(nodo.padre.claves, nodo.padre.numeroClaves);
+    
+    if(nodo.padre.numeroClaves==5){
+        this.dividir(nodo.padre);
+    }
+    
+    nodo = null;
+
+}
+
+
+
+
+
+
+public Clave[] ordenar(Clave[] claves, int cantidadC){
     
     String aux;
     
@@ -74,11 +125,14 @@ public String[] ordenar(String[] claves, int cantidadC){
         
         for (int j = 0; j < cantidadC-1; j++) {
             
-            if(claves[j].compareTo(claves[j+1])> 0){
+            if(claves[j].placa.compareTo(claves[j+1].placa)> 0){
                 
-                aux = claves[j];
-                claves[j] = claves[j+1];
-                claves[j+1] = aux;
+                aux = claves[j].placa;
+                claves[j].placa = claves[j+1].placa;
+                claves[j+1].placa = aux;
+                
+                claves[j+1].derecho = claves[i].izquierdo;
+                claves[j].izquierdo = claves[i].derecho;
                 
             }
             
@@ -92,12 +146,20 @@ public String[] ordenar(String[] claves, int cantidadC){
 
 public void imprimirClavesRaiz(){
     
-    for (int i = 0; i < raiz.claves.length; i++) {
-        
-        System.out.println(raiz.claves[i]);
+    for (Clave clave : raiz.claves) {
+        if (clave != null) {
+            System.out.println(clave.placa);
+        }
     }
     
 }
+
+
+
+
+
+
+
 
 
 public NodoArbol dividir(NodoArbol nodo){
@@ -126,8 +188,8 @@ public NodoArbol dividir(NodoArbol nodo){
             
         }
         
-        nodo.hijos[0] = izquierdo;
-        nodo.hijos[1]=derecho;
+        nodo.claves[0].izquierdo = izquierdo;
+        nodo.claves[0].derecho = derecho;
         
         izquierdo.padre = nodo;
         derecho.padre = nodo;
@@ -137,23 +199,18 @@ public NodoArbol dividir(NodoArbol nodo){
     }
     else{
     
-        int medio = nodo.claves.length/2;
-        
-        nodo.padre.claves[nodo.padre.numeroClaves] = nodo.claves[medio];
-        
-        nodo.claves[medio] = nodo.claves[medio+1];
-        nodo.claves[medio+1] = nodo.claves[medio+2];
-        nodo.claves[nodo.claves.length] = null;
-        
-        this.ordenar(nodo.padre.claves, nodo.padre.numeroClaves);
-        
-        
+        this.insertarAPadre(nodo);
     
     }
     
     return nodo;
     
 }
+
+
+
+
+
 
 
     
