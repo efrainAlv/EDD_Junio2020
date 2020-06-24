@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package proyecto2.edd;
-import Estructuras.Arbol_B;
+import Estructuras.*;
+import Clases.*;
+import java.math.BigInteger;
 
 /**
  *
@@ -17,6 +19,7 @@ public class Proyecto2EDD {
      */
     public static void main(String[] args) {
         
+        /*
         Arbol_B arbol = new Arbol_B();
         arbol.insertar("dedo",null);
         arbol.insertar("arbol",null);
@@ -28,7 +31,16 @@ public class Proyecto2EDD {
         arbol.insertar("jarro",null);
         
         arbol.imprimirClavesRaiz();
+        */
         
+        
+        TablaHash tabla = new TablaHash();
+        
+        tabla.insertar(new Cliente(new BigInteger("3004107780101"),"Helmut","Najarro","M","Direccion"));
+        tabla.insertar(new Cliente(new BigInteger("4564876545644"),"Helmut","Najarro","M","Direccion"));
+        tabla.insertar(new Cliente(new BigInteger("3613548456852"),"Helmut","Najarro","M","Direccion"));
+        tabla.insertar(new Cliente(new BigInteger("1679845642354"),"Helmut","Najarro","M","Direccion"));
+        tabla.insertar(new Cliente(new BigInteger("1136768546546"),"Helmut","Najarro","M","Direccion"));
     }
     
 }
