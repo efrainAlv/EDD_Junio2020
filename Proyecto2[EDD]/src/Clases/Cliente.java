@@ -18,15 +18,19 @@ public class Cliente {
     private String nombres;
     private String appelidos;
     private String genero;
+    private String fechaNac;
+    private String telefono;
     private String direccion;
     
     
-    public Cliente(BigInteger DPI, String nombres, String apellidos, String genero, String direccion){
+    public Cliente(BigInteger DPI, String nombres, String apellidos, String genero, String fechaNac, String telefono, String direccion){
         this.DPI = DPI;
         this.nombres = nombres;
         this.appelidos = apellidos;
         this.genero = genero;
         this.direccion = direccion;
+        this.fechaNac = fechaNac;
+        this.telefono = telefono;
     }
 
     public BigInteger getDPI() {
@@ -68,6 +72,24 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public String getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(String fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    
     
     
 }

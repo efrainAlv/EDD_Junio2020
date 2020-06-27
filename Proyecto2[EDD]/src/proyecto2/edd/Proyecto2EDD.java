@@ -8,13 +8,20 @@ import Estructuras.*;
 import Clases.*;
 import java.math.BigInteger;
 import Estructuras.ListaAdyacencia.*;
+import Interfaz.*;
 
 /**
  *
  * @author efrai
  */
+
+
 public class Proyecto2EDD {
 
+    public static ListaAdyacencia listaA = new ListaAdyacencia("Lista");
+    public static TablaHash tablaH = new TablaHash();
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -34,16 +41,14 @@ public class Proyecto2EDD {
         arbol.imprimirClavesRaiz();
         */
         
+       
+        //Inicio pantallaInicio = new Inicio();
+        //pantallaInicio.setVisible(true);
         
-        TablaHash tabla = new TablaHash();
+        ModuloClientes mc = new ModuloClientes();
+        mc.setVisible(true);
         
-        tabla.insertar(new Cliente(new BigInteger("3004107780101"),"Helmut","Najarro","M","Direccion"));
-        tabla.insertar(new Cliente(new BigInteger("4564876545644"),"Helmut","Najarro","M","Direccion"));
-        tabla.insertar(new Cliente(new BigInteger("3613548456852"),"Helmut","Najarro","M","Direccion"));
-        tabla.insertar(new Cliente(new BigInteger("1679845642354"),"Helmut","Najarro","M","Direccion"));
-        tabla.insertar(new Cliente(new BigInteger("1136768546546"),"Helmut","Najarro","M","Direccion"));
-        
-        
+        /*
         Ruta ruta0 = new Ruta("Origen1","Destino1",20);
         Ruta ruta1 = new Ruta("barca","guate",20);
         Ruta ruta2 = new Ruta("guate","usa",20);
@@ -71,6 +76,8 @@ public class Proyecto2EDD {
         
         tablaA.crearGrafica();
         tablaA.crearGrafo();
+
+*/
         
     }
     
