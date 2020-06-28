@@ -7,6 +7,7 @@ package Estructuras;
 
 import java.math.BigInteger;
 import Clases.Cliente;
+import java.util.Formatter;
 /**
  *
  * @author efrai
@@ -77,6 +78,85 @@ public class TablaHash {
         
     }
     
+    
+    public String formatoIndicesTablaHash(){
+    
+        String cadenaFormatosIndices ="subgraph cluster_R{ \n";
+        String cadenaEnlaces ="";
+        String cadenaFormatosContenido="";
+        
+        for (int i = 0; i < claves.length; i++) {
+            if(claves[i]!=null){
+                cadenaFormatosContenido+=claves[i].formatoContenidoablaHash();
+                cadenaFormatosIndices+='"'+i+'"'+"[label="+'"'+"{"+i+"|}"+'"'+"]\n";
+                cadenaEnlaces+='"'+i+'"'+"->"+'"'+claves[i].cabeza.cliente.getDPI()+'"'+"\n";
+            }
+        }
+            
+     
+        cadenaFormatosIndices+="} \n";
+        return cadenaFormatosContenido+cadenaFormatosIndices+cadenaEnlaces;
+        
+    }
+    
+    
+    public void crearGrafica(){
+    
+        try {
+            Formatter f = new Formatter("C:\\Users\\efrai\\Desktop\\GRAFICAS\\\\TablaHash\\tablaHash.txt");
+            f.format("digraph G{ \n");
+            
+            f.format("rankdir=LR; \n");
+            f.format("node [shape=record,height=.08,fontsize=11]; \n");
+            
+            f.format(this.formatoIndicesTablaHash());
+            
+            f.format("}");
+            f.close();    
+        }catch (Exception e) {
+            System.out.println("Error");
+        }
+    
+    }
+    
+    
+    public Cliente buscar(BigInteger DPI){
+    
+        Integer posicion = dividir(DPI);
+        
+        for (int i = 0; i < claves.length; i++) {
+            if(i==posicion){
+                return claves[i].buscarUsuario(DPI);
+            }
+        }
+        
+        return null;
+    }
+    
+    public Cliente editarCliente(BigInteger DPI, String nombres, String apellidos, String genero, String fecha, String telefono, String direccion){
+    
+        Integer posicion = dividir(DPI);
+        Cliente cliente = null;
+        
+        for (int i = 0; i < claves.length; i++) {
+            if(i==posicion){
+                cliente = claves[i].editarCliente(DPI, nombres, apellidos, genero, fecha, telefono, direccion); 
+            }
+        }
+        return cliente;
+    }
+    
+    public void eliminarCliente(BigInteger DPI){
+        
+        Integer posicion = dividir(DPI);
+        Cliente cliente = null;
+        
+        for (int i = 0; i < claves.length; i++) {
+            if(i==posicion){
+                
+            }
+        }
+    }
     
     
     

@@ -48,6 +48,7 @@ public class Proyecto2EDD {
         ModuloClientes mc = new ModuloClientes();
         mc.setVisible(true);
         
+         
         /*
         Ruta ruta0 = new Ruta("Origen1","Destino1",20);
         Ruta ruta1 = new Ruta("barca","guate",20);
